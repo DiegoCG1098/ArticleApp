@@ -1,4 +1,4 @@
-package com.hampcode;
+package com.orbes;
 
 import java.util.TimeZone;
 
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-public class Capstoneproject01ApplicationTests implements CommandLineRunner {
+public class Capstoneproject01Application implements CommandLineRunner {
 
 	/*
 	@PostConstruct
@@ -29,7 +29,7 @@ public class Capstoneproject01ApplicationTests implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Capstoneproject01ApplicationTests.class, args);
+		SpringApplication.run(Capstoneproject01Application.class, args);
 	}
 
 	@Override
