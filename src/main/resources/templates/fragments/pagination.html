@@ -11,33 +11,33 @@
                     </div>-->
 
 
-						<div th:if="${suppliersList.totalPages != 1}" class="section">
+						<div th:if="${articlesList.totalPages != 1}" class="section">
 							<ul class="pagination pagination-primary">
 								<li class="page-item"
-									th:class="${suppliersList.number == 0} ? disabled"><a
+									th:class="${articlesList.number == 0} ? disabled"><a
 									class="page-link"
-									th:href="@{/suppliers/(pageSize=${selectedPageSize}, page=1)}">Â«</a></li>
+									th:href="@{/articles/(pageSize=${selectedPageSize}, page=1)}">«</a></li>
 								<li class="page-item"
-									th:class="${suppliersList.number == 0} ? disabled"><a
+									th:class="${articlesList.number == 0} ? disabled"><a
 									class="page-link"
-									th:href="@{/suppliers/(pageSize=${selectedPageSize}, page=${suppliersList.number})}">â†�</a>
+									th:href="@{/articles/(pageSize=${selectedPageSize}, page=${articlesList.number})}">←</a>
 								</li>
 								<li
-									th:class="${suppliersList.number == (page - 1)} ? 'active page-item'"
+									th:class="${articlesList.number == (page - 1)} ? 'active page-item'"
 									th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
 									<a class="page-link"
-									th:href="@{/suppliers/(pageSize=${selectedPageSize}, page=${page})}"
+									th:href="@{/articles/(pageSize=${selectedPageSize}, page=${page})}"
 									th:text="${page}"></a>
 								</li>
 								<li class="page-item"
-									th:class="${suppliersList.number + 1 == suppliersList.totalPages} ? disabled">
+									th:class="${articlesList.number + 1 == articlesList.totalPages} ? disabled">
 									<a class="page-link"
-									th:href="@{/suppliers/(pageSize=${selectedPageSize}, page=${suppliersList.number + 2})}">â†’</a>
+									th:href="@{/articles/(pageSize=${selectedPageSize}, page=${articlesList.number + 2})}">→</a>
 								</li>
 								<li class="page-item"
-									th:class="${suppliersList.number + 1 == suppliersList.totalPages} ? disabled">
+									th:class="${articlesList.number + 1 == articlesList.totalPages} ? disabled">
 									<a class="page-link"
-									th:href="@{/suppliers/(pageSize=${selectedPageSize}, page=${suppliersList.totalPages})}">Â»</a>
+									th:href="@{/articles/(pageSize=${selectedPageSize}, page=${articlesList.totalPages})}">»</a>
 								</li>
 							</ul>
 						</div>

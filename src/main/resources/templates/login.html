@@ -15,7 +15,14 @@
 
 						<form th:action="@{/login}" method="post">
 
+							<div th:if="${param.error}">
+								<div class="alert alert-danger">Usuario o clave
+									incorrectos</div>
+							</div>
 
+							<div th:if="${param.logout}">
+								<div class="alert alert-success">Ha cerrado sesión</div>
+							</div>
 
 							<div class="form-group">
 								<input type="text" id="username" name="username"

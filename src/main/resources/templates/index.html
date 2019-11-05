@@ -13,20 +13,20 @@
 				<div class="row">
 					<div class="col-md-8">
 						<div class="container">
-							<div class="row" th:each="supplier : ${suppliersList}">
+							<div class="row" th:each="article : ${articlesList}">
 								<div class="col">
 									<div class="title">
-										<h2 th:text="${supplier.title}"></h2>
+										<h2 th:text="${article.title}"></h2>
 									</div>
 									<div>
 										<h6
-											th:text="'written by ' + ${supplier.ruc} + ' | ' + ${supplier.product}"></h6>
-										<p th:number="${supplier.phone}"></p>
+											th:text="'written by ' + ${article.author} + ' | ' + ${article.category}"></h6>
+										<p th:text="${article.description}"></p>
 									</div>
 									<div class="container">
 										<div class="row">
 											<div class="col-sx-6 offset-sx-3"></div>
-											<a th:href="@{'/home/' + ${supplier.supplierId}}"
+											<a th:href="@{'/home/' + ${article.articleId}}"
 												class="btn btn-primary">continue</a>
 										</div>
 									</div>
@@ -35,7 +35,9 @@
 						</div>
 
 
-						
+						<div class="container">
+							<th:block th:include="fragments/pagination"></th:block>
+						</div>
 
 
 					</div>

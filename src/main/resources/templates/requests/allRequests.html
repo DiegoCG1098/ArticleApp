@@ -12,17 +12,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 offset-md-2 col-sm-12">
+
 						<div class="title">
-							<h2>Suppliers</h2>
+							<h2>Table with Pagination</h2>
 						</div>
 
 						<table class="table table-responsive highlight">
 							<thead>
 								<tr>
-									<th>Enterprise</th>
-									<th>Ruc</th>
+									<th>Area</th>
 									<th>Product</th>
-									<th>Phone</th>
+									<th>Quantity</th>
+									<th>State</th>
+									<th>Date</th>
+									<th>Unit_price</th>
 
 									<th></th>
 									<th></th>
@@ -30,20 +33,23 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="supplier : ${suppliersList}">
-									<td th:text="${supplier.enterprise}"></td>
-									<td th:text="${supplier.ruc}"></td>
-									<td th:text="${supplier.product}"></td>
-									<td th:text="${supplier.phone}"></td>
+								<tr th:each="request : ${requestsList}">
+									<td th:text="${request.area}"></td>
+									<td th:text="${request.product}"></td>
+									<td th:text="${request.quantity}"></td>
+									<td th:text="${request.state}"></td>
+									<td th:text="${request.date}"></td>
+									<td th:text="${request.unit_price}"></td>
+									
 
 									<td><a
-										th:href="@{/suppliers/{id}(id=${supplier.supplierId})}"><i
+										th:href="@{/requests/{id}(id=${request.id})}"><i
 											class="fab fa-readme"></i></a></td>
 									<td><a
-										th:href="@{/suppliers/{id}/edit(id=${supplier.supplierId})}"><i
+										th:href="@{/requests/{id}/edit(id=${request.id})}"><i
 											class="far fa-edit"></i></a></td>
 									<td><a
-										th:href="@{/suppliers/{id}/delete(id=${supplier.supplierId})}"><i
+										th:href="@{/requests/{id}/delete(id=${request.id})}"><i
 											class="fas fa-trash-alt"></i></a></td>
 								</tr>
 							</tbody>
@@ -52,6 +58,10 @@
 				</div>
 			</div>
 			<br> &nbsp;&nbsp;&nbsp; <br>
+			
+			<div class="container">
+				<th:block th:include="fragments/pagination"></th:block>			
+			</div>			
 
 		</div>
 	</div>
