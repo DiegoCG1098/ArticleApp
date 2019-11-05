@@ -11,7 +11,7 @@ public class LoginController {
 	@GetMapping(value = { "/login" })
 	public String login() {
 
-		return "redirect:/articles";
+		return "redirect:/suppliers";
 
 	}
 }
