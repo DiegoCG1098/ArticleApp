@@ -27,7 +27,7 @@ public class RequestController {
 	protected static final String REQUEST_ADD_FORM_VIEW = "requests/newRequest"; // form for new article
 	protected static final String REQUEST_EDIT_FORM_VIEW = "requests/editRequest"; // form for editing an article
 
-	protected static final String ARTICLE_PAGE_VIEW = "requests/allRequests"; // list with pagination
+	protected static final String REQUEST_PAGE_VIEW = "requests/allRequests"; // list with pagination
 
 	protected static final String INDEX_VIEW = "index"; // articles with pagination
 
@@ -45,9 +45,9 @@ public class RequestController {
 
 	
 	@GetMapping
-	public ModelAndView getAllArticles(@RequestParam("pageSize") Optional<Integer> pageSize,
+	public ModelAndView getAllRequests(@RequestParam("pageSize") Optional<Integer> pageSize,
 			@RequestParam("page") Optional<Integer> page) {
-		ModelAndView modelAndView = pageInitiPagination.initPagination(pageSize, page, ARTICLE_PAGE_VIEW);
+		ModelAndView modelAndView = pageInitiPagination.initPagination(pageSize, page, REQUEST_PAGE_VIEW);
 		return modelAndView;
 	}
 	
@@ -67,10 +67,10 @@ public class RequestController {
 		if (result.hasErrors() ) {
 
 			// After the redirect: flash attributes pass attributes to the model
-			attr.addFlashAttribute("org.springframework.validation.BindingResult.article", result);
+			attr.addFlashAttribute("org.springframework.validation.BindingResult.request", result);
 			attr.addFlashAttribute("request", request);
 
-			attr.addFlashAttribute("error", "No se permite articulos con el mismo titulo y autor");
+			attr.addFlashAttribute("error", "Error a la hora de crear la solicitud");
 
 			return "redirect:/requests/new";
 		}
@@ -99,17 +99,17 @@ public class RequestController {
 		if (result.hasErrors() ) {
 
 			/// After the redirect: flash attributes pass attributes to the model
-			attr.addFlashAttribute("org.springframework.validation.BindingResult.article", result);
+			attr.addFlashAttribute("org.springframework.validation.BindingResult.request", result);
 			attr.addFlashAttribute("request", requestDetails);
 
-			attr.addFlashAttribute("error", "No se permite articulos con el mismo titulo y autor");
+			attr.addFlashAttribute("error", "Error a la hora de actualizar la solicitud");
 
 			return "redirect:/requests/" + requestDetails.getId() + "/edit";
 		}
 
 		requestService.updateRequest(requestId, requestDetails);
 		model.addAttribute("request", requestService.findById(requestId));
-		return "redirect:/articles/" + requestId;
+		return "redirect:/requests/" + requestId;
 	}
 
 	@GetMapping(value = "/{id}/delete")

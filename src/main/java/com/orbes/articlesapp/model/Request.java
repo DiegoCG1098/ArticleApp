@@ -16,7 +16,7 @@ import javax.validation.constraints.NotEmpty;
 public class Request {
 	
 	@Id
-	@Column(name="req_id")
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 Long id;
 	

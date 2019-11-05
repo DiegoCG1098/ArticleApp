@@ -14,7 +14,7 @@
 					<div class="col-md-8 offset-md-2 col-sm-12">
 
 						<div class="title">
-							<h2>Table with Pagination</h2>
+							<h2>Reportes de Solicitudes de Compra</h2>
 						</div>
 
 						<table class="table table-responsive highlight">
@@ -25,7 +25,8 @@
 									<th>Quantity</th>
 									<th>State</th>
 									<th>Date</th>
-									<th>Unit_price</th>
+																				
+									
 
 									<th></th>
 									<th></th>
@@ -39,8 +40,7 @@
 									<td th:text="${request.quantity}"></td>
 									<td th:text="${request.state}"></td>
 									<td th:text="${request.date}"></td>
-									<td th:text="${request.unit_price}"></td>
-									
+
 
 									<td><a
 										th:href="@{/requests/{id}(id=${request.id})}"><i
@@ -58,16 +58,10 @@
 				</div>
 			</div>
 			<br> &nbsp;&nbsp;&nbsp; <br>
-			
-			<div class="container">
-				<th:block th:include="fragments/pagination"></th:block>			
-			</div>			
+					
 
 		</div>
 	</div>
-
-
-
 
 
 	<th:block th:include="fragments/footer"></th:block>

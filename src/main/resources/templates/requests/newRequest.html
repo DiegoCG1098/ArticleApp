@@ -40,9 +40,46 @@
 									class="form-control validate"> <label for="product">Producto</label>
 								
 							</div>
+							
+							<div class="form-group">
+								<input th:field="*{quantity}" id="quantity" type="text"
+									class="form-control validate"> <label for="quantity">Cantidad</label>
+								
+							</div>
 
+							<div class="form-group">
+								<input th:field="*{state}" id="state" type="text"
+									class="form-control validate"> <label for="state">Estado</label>
+								<span class="text-danger errorMsg"
+								    th:if="${#fields.hasErrors('state')}" th:errors="*{state}">								
+								</span>
+							</div>
+							
+							<div class="form-group">
+								<input th:field="*{date}" id="date" type="text"
+									class="form-control validate"> <label for="state">Fecha</label>
+								<span class="text-danger errorMsg"
+								    th:if="${#fields.hasErrors('date')}" th:errors="*{date}">								
+								</span>
+							</div>
+							
+							<div class="form-group">
+								<input th:field="*{unit_price}" id="unit_price" type="text"
+									class="form-control validate"> <label for="state">Unidad de precio</label>
+								<span class="text-danger errorMsg"
+								    th:if="${#fields.hasErrors('unit_price')}" th:errors="*{unit_price}">								
+								</span>
+							</div>
+							
+							<div class="form-group">
+								<textarea th:field="*{description}" id="description"
+									class="form-control" rows="6"></textarea>
+								<label for="description">Descripcion</label> 
+								
+							</div>
+									
 							<button type="submit" class="btn btn-dark">Guardar</button>
-							<a class="btn btn-primary" th:href="@{'/articles'}">Cancelar</a>
+							<a class="btn btn-primary" th:href="@{'/requests'}">Cancelar</a>
 
 						</form>
 					</div>

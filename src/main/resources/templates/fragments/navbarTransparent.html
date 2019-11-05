@@ -16,34 +16,47 @@
 			<ul class="navbar-nav ml-auto">
 				<li class="dropdown nav-item"><a th:href="@{/requests/new}"
 					class="nav-link" sec:authorize="isAuthenticated()"> <i
-						class="fas fa-plus"></i> Solicitude de Compra
+						class="fas fa-plus"></i> Solicitud de Compra
 				</a></li>
+				
+				
 				<li class="dropdown nav-item"><a th:href="@{/requests/new}"
 					class="nav-link" sec:authorize="isAuthenticated()"> <i
 						class="fas fa-plus"></i> Orden de Compra
 				</a></li>
-				<li class="dropdown nav-item"><a th:href="@{/requests/new}"
+				
+				
+				<li class="dropdown nav-item">
+				<a th:href="@{/suppliers/new}"
 					class="nav-link" sec:authorize="isAuthenticated()"> <i
 						class="fas fa-plus"></i> Proveedores
 				</a></li>
+				
+				
 				<li class="dropdown nav-item"><a th:href="@{/requests/new}"
 					class="nav-link" sec:authorize="isAuthenticated()"> <i
 						class="fas fa-plus"></i> Productos
 				</a></li>
-				<li class="dropdown nav-item"><a th:href="@{/requests/new}"
-					class="nav-link"> <i
+				<li class="dropdown nav-item"><a th:href="@{/articles/new}"
+					class="nav-link" sec:authorize="isAuthenticated()"> <i
 						class="fas fa-plus"></i> Incidencias
 				</a></li>
 				
 
 	<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" 
+        
+        href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()" >
           Reportes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" th:href="@{/requests/new}">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" th:href="@{/requests}">Solicitudes</a>
+          <a class="dropdown-item" href="#">Ordenes de Compra</a>
+          <a class="dropdown-item" th:href="@{/suppliers}">Proveedores</a>
+		 <a class="dropdown-item" href="#">Productos</a>
+		 <a class="dropdown-item" href="#">Incidencias</a>
+			 
+          
         </div>
       </li>
 				<li class="dropdown nav-item" sec:authorize="!isAuthenticated()"><a

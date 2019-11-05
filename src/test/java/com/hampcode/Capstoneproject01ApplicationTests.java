@@ -1,45 +1,16 @@
 package com.hampcode;
 
-import java.util.TimeZone;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.PostConstruct;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class Capstoneproject01ApplicationTests {
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-@SpringBootApplication
-public class Capstoneproject01ApplicationTests implements CommandLineRunner {
-
-	/*
-	@PostConstruct
-	void init() {
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-	}
-*/
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+	@Test
+	public void contextLoads() {
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(Capstoneproject01ApplicationTests.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-
-		String password = "12345";
-
-		for (int i = 0; i < 2; i++) {
-			String bcryptPassword = passwordEncoder.encode(password);
-			System.out.println(bcryptPassword);
-		}
-	}
 }

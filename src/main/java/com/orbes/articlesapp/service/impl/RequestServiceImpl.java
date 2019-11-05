@@ -45,6 +45,7 @@ public class RequestServiceImpl implements RequestService {
 		request.setState(requestDetails.getState());
 		request.setDate(requestDetails.getDate());
 		request.setUnit_price(requestDetails.getUnit_price());
+		request.setDescription(requestDetails.getDescription());
 
 		requestRepository.save(request);
 		return request;

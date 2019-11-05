@@ -9,14 +9,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.orbes.articlesapp.model.Article;
+import com.orbes.articlesapp.model.Request;
+import com.orbes.articlesapp.model.Supplier;
 import com.orbes.articlesapp.service.ArticleService;
+import com.orbes.articlesapp.service.RequestService;
+import com.orbes.articlesapp.service.SupplierService;
 
 @Component
 public class PageInitPagination {
 
 	@Autowired
 	private ArticleService articleService;
-
+	
+	@Autowired
+	private RequestService requestService;
+	
+	@Autowired
+	private SupplierService supplierService;
 	
 	/*@Autowired
 	private BookService bookService;*/
@@ -40,14 +49,31 @@ public class PageInitPagination {
 
 		Page<Article> articlesList = articleService.findAll(PageRequest.of(evalPage, evalPageSize));
 		PagerModel pager = new PagerModel(articlesList.getTotalPages(), articlesList.getNumber(), BUTTONS_TO_SHOW);
-
 		initModelView.addObject("articlesList", articlesList);
 		initModelView.addObject("selectedPageSize", evalPageSize);
 		initModelView.addObject("pageSizes", PAGE_SIZES);
 		initModelView.addObject("pager", pager);
+		
+		Page<Request> requestsList = requestService.findAll(PageRequest.of(evalPage, evalPageSize));
+		PagerModel pager2 = new PagerModel(requestsList.getTotalPages(), requestsList.getNumber(), BUTTONS_TO_SHOW);
+		initModelView.addObject("requestsList", requestsList);
+		initModelView.addObject("selectedPageSize", evalPageSize);
+		initModelView.addObject("pageSizes", PAGE_SIZES);
+		initModelView.addObject("pager", pager2);
+		
+		Page<Supplier> suppliersList = supplierService.findAll(PageRequest.of(evalPage, evalPageSize));
+		PagerModel pager3 = new PagerModel(suppliersList.getTotalPages(), suppliersList.getNumber(), BUTTONS_TO_SHOW);
+
+		initModelView.addObject("suppliersList", suppliersList);
+		initModelView.addObject("selectedPageSize", evalPageSize);
+		initModelView.addObject("pageSizes", PAGE_SIZES);
+		initModelView.addObject("pager", pager3);
+		
+	
 		return initModelView;
 	}
 
+	
 	/*public  ModelAndView initPaginationBook(Optional<Integer> pageSize, Optional<Integer> page, String url) {
 		ModelAndView initModelView = new ModelAndView(url);
 		// If pageSize == null, return initial page size

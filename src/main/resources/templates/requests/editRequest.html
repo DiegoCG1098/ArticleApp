@@ -12,12 +12,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 offset-md-2 col-sm-12">
-						<div class="title">
-							<h2>Edit Article</h2>
+						<div class="state">
+							<h2>Editar Solicitud de compra</h2>
 						</div>
 
-						<form th:object="${article}"
-							th:action="@{/articles/{id}/update(id=${article.articleId})}"
+						<form th:object="${request}"
+							th:action="@{/requests/{id}/update(id=${request.id})}"
 							th:method="post">
 
 							<div class="alert alert-danger" th:if="${error!=null}"
@@ -28,33 +28,60 @@
 							</div>
 
 							<div class="form-group invisible">
-								<input th:field="*{articleId}" id="articleId" type="text"
-									class="form-control validate"> <label for="author">articleId</label>
+								<input th:field="*{id}" id="id" type="text"
+									class="form-control validate"> <label for="id">id</label>
 							</div>
 
 							<div class="form-group">
-								<input th:field="*{author}" id="author" type="text"
-									class="form-control validate"> <label for="author">Author</label>
+								<input th:field="*{area}" id="area" type="text"
+									class="form-control validate"> <label for="area">Area</label>
 								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+									th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></span>
 							</div>
+							
 
 							<div class="form-group">
-								<input th:field="*{title}" id="title" type="text"
-									class="form-control validate"> <label for="author">Title</label>
+								<input th:field="*{product}" id="product" type="text"
+									class="form-control validate"> <label for="product">Producto</label>
 								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+									th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></span>
 							</div>
-
+							
+							
 							<div class="form-group">
-								<input th:field="*{category}" id="category" type="text"
-									class="form-control validate"> <label for="category">Category</label>
+								<input th:field="*{quantity}" id="quantity" type="text"
+									class="form-control validate"> <label for="quantity">Cantidad</label>
 								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('category')}"
-									th:errors="*{category}"></span>
+									th:if="${#fields.hasErrors('quantity')}"
+									th:errors="*{quantity}"></span>
+							</div>
+
+
+						<div class="form-group">
+								<input th:field="*{state}" id="state" type="text"
+									class="form-control validate"> <label for="state">Estado</label>
+								<span class="text-danger errorMsg"
+									th:if="${#fields.hasErrors('state')}"
+									th:errors="state"></span>
 							</div>
 
 							<div class="form-group">
+								<input th:field="*{date}" id="date" type="text"
+									class="form-control validate"> <label for="date">Fecha</label>
+								<span class="text-danger errorMsg"
+									th:if="${#fields.hasErrors('date')}"
+									th:errors="*{date}"></span>
+							</div>
+							
+							<div class="form-group">
+								<input th:field="*{unit_price}" id="unit_price" type="text"
+									class="form-control validate"> <label for="unit_price">Unida de precio</label>
+								<span class="text-danger errorMsg"
+									th:if="${#fields.hasErrors('unit_price')}"
+									th:errors="*{unit_price}"></span>
+							</div>
+							
+													<div class="form-group">
 								<textarea th:field="*{description}" id="description"
 									class="form-control" rows="6"></textarea>
 								<label for="description">Description</label> <span
@@ -62,17 +89,9 @@
 									th:if="${#fields.hasErrors('description')}"
 									th:errors="*{description}"></span>
 							</div>
-
-							<div class="form-group">
-								<textarea th:field="*{content}" id="content"
-									class="form-control" rows="16"></textarea>
-								<label for="content"><h6>Content</h6></label> <span
-									class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
-							</div>
-
+							
 							<button type="submit" class="btn btn-dark">Save</button>
-							<a class="btn btn-primary" th:href="@{'/articles'}">Cancel</a>
+							<a class="btn btn-primary" th:href="@{'/requests'}">Cancel</a>
 
 						</form>
 					</div>

@@ -14,21 +14,20 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12">
                     <div class="title">
-                        <h2 th:text="${article.title}"></h2>
+                        <h2 th:text="${request.state}"></h2>
                     </div>
-                    <h6 th:text="${article.category}">Category</h6>
-                    <h6 th:text="'written by ' + ${article.author}">Author</h6>
-                    
-                    
-                    <p th:text="${article.description}"></p>
-                    <p th:text="${article.content}"></p>
+                    <h6 th:text="${request.area}">Area</h6>
+                    <h6 th:text="'written by ' + ${request.product}">Producto</h6>
+   
+                    <p th:text="${request.quantity}"></p>
+                    <p th:text="${request.description}"></p>
                 </div>
             </div>
             &nbsp;
             &nbsp;
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12"  sec:authorize="isAuthenticated()">
-                    <a th:href="@{'/articles/' + ${article.articleId} + '/edit'}"
+                    <a th:href="@{'/requests/' + ${request.id} + '/edit'}"
                        class="btn btn-primary">Edit</a>
                 </div>
             </div>
