@@ -8,8 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.websocket.OnError;
+
+import org.aspectj.lang.annotation.DeclareError;
 
 
 @Entity
@@ -29,8 +35,9 @@ public class Request {
 	
 	
 	private String description;
-	
-	@NotNull(message = "Ingrese cantidad")
+
+
+	@NotNull(message="Error de validación: se necesita un valor")
 	private Long quantity;
 	
 	@NotEmpty(message="Ingrese estado de solicitud")
@@ -39,8 +46,7 @@ public class Request {
 	@NotEmpty(message="Ingrese fecha")
 	private String date;
 	
-	
-	@NotNull(message = "Ingrese unidad de precio")
+	@NotNull(message="Error de validación: Formato(#0.0000)")
 	private double unit_price;
 	
 	
