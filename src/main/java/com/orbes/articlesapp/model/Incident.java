@@ -69,13 +69,13 @@ public class Incident {
 		this.gravity = gravity;
 	}
 
-	/*public List<Supplier> getSuppliers() {
+	public List<Supplier> getSuppliers() {
 		return suppliers;
 	}
 
 	public void setSuppliers(List<Supplier> suppliers) {
 		this.suppliers = suppliers;
-	}*/
+	}
 
 	public Date getDate() {
 		return date;
