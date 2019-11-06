@@ -1,10 +1,13 @@
 package com.orbes.articlesapp.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -43,6 +46,18 @@ public class Supplier {
 	@Column(name = "description")
 	private String description;*/
 	
+	
+	@ManyToMany(mappedBy = "suppliers")
+	private List<Incident> incidents;
+	
+	public List<Incident> getIncidents() {
+		return incidents;
+	}
+
+	public void setIncidents(List<Incident> incidents) {
+		this.incidents = incidents;
+	}
+
 	public long getSupplierId() {
 		return supplierId;
 	}
