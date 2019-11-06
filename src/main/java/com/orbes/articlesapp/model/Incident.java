@@ -33,13 +33,14 @@ public class Incident {
 	@NotEmpty(message="Debe ingresar el campo de gravedad")
 	private String gravity;
 
-	/*@NotEmpty(message="Debe ingresar el campo del proveedor")
+	@NotEmpty(message="Debe ingresar el campo del proveedor")
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "incident_supplier", 
 				joinColumns = { @JoinColumn(name = "incident_id") }, 
 				inverseJoinColumns = {@JoinColumn(name = "supplier_id") 
 			})
-	private List<Supplier> suppliers = new ArrayList<>();*/
+	private List<Supplier> suppliers = new ArrayList<>();
+	
 
 	@Column(name = "date")
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
