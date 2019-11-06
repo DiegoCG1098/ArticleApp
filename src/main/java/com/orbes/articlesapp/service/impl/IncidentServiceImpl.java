@@ -46,7 +46,7 @@ public class IncidentServiceImpl implements IncidentService {
 		// TODO Auto-generated method stub
 		Incident incident= findById(id);
 		
-		//incident.setSuppliers(entity.getSuppliers());
+		incident.setSuppliers(incidentDetails.getSuppliers());
 		incident.setDate(incidentDetails.getDate());
 		incident.setGravity(incidentDetails.getGravity());
 		incident.setObservations(incidentDetails.getObservations());

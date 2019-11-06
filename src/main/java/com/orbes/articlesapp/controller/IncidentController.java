@@ -1,5 +1,6 @@
 package com.orbes.articlesapp.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -19,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.orbes.articlesapp.common.PageInitPagination;
 import com.orbes.articlesapp.model.Article;
 import com.orbes.articlesapp.model.Incident;
+import com.orbes.articlesapp.model.Supplier;
 import com.orbes.articlesapp.service.IncidentService;
+import com.orbes.articlesapp.service.SupplierService;
 
 @Controller
 @RequestMapping("/incidents")
@@ -38,6 +41,7 @@ public class IncidentController {
 	
 	@Autowired
 	private IncidentService incidentService;
+	private SupplierService supplierService;
 
 	@GetMapping("/{id}")
 	public String getIncidentById(@PathVariable(value = "id") Long incidentId, Model model) {
@@ -58,6 +62,8 @@ public class IncidentController {
 		// in case of redirection model will contain article
 		if (!model.containsAttribute("incident")) {
 			model.addAttribute("incident", new Incident());
+			 List<Supplier> suppliers = supplierService.getAllSupplier();
+		     model.addAttribute("suppliers", suppliers);
 		}
 		return INCIDENT_ADD_FORM_VIEW;
 	}
