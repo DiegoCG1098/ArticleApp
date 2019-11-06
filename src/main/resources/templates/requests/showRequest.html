@@ -17,7 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                         <h2 th:text="${request.state}"></h2>
                     </div>
                     <h6 th:text="${request.area}">Area</h6>
-                    <h6 th:text="'written by ' + ${request.product}">Producto</h6>
+                    <h6 th:text="' Producto: ' + ${request.product}">Producto</h6>
    
                     <p th:text="${request.quantity}"></p>
                     <p th:text="${request.description}"></p>

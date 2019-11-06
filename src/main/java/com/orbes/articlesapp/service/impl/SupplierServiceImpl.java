@@ -39,7 +39,7 @@ public class SupplierServiceImpl implements SupplierService {
 		Supplier supplier = findById(id);
 
 		supplier.setEnterprise(supplierDetails.getEnterprise());
-		supplier.setRuc(supplierDetails.getProduct());
+		supplier.setRuc(supplierDetails.getRuc());
 		supplier.setProduct(supplierDetails.getProduct());
 		supplier.setPhone(supplierDetails.getPhone());
 		
