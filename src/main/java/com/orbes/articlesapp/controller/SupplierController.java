@@ -30,11 +30,13 @@ public class SupplierController {
 	protected static final String SUPPLIER_PAGE_VIEW = "suppliers/allSuppliers"; // list with pagination
 	protected static final String INDEX_VIEW = "index"; // articles with pagination
 
-	@Autowired
-	private SupplierService supplierService;
+	
 
 	@Autowired
 	private PageInitPagination pageInitPagination;
+	
+	@Autowired
+	private SupplierService supplierService;
 	
 	@GetMapping("/{id}")
 	public String getSupplierById(@PathVariable(value = "id") Long supplierId, Model model) {
@@ -43,14 +45,9 @@ public class SupplierController {
 	}
 
 	@GetMapping
-	public ModelAndView getAllSuppliers(
-			@RequestParam("pageSize") Optional<Integer> pageSize,
-			@RequestParam("page") Optional<Integer> page
-			) {
-		// ModelAndView modelAndView = pageInitiPagination.initPagination(pageSize,
-		// page, ARTICLE_PAGE_VIEW);
+	public ModelAndView getAllSuppliers(@RequestParam("pageSize") Optional<Integer> pageSize,
+			@RequestParam("page") Optional<Integer> page) {
 		ModelAndView modelAndView = pageInitPagination.initPagination(pageSize, page, SUPPLIER_PAGE_VIEW);
-
 		return modelAndView;
 	}
 
@@ -73,7 +70,7 @@ public class SupplierController {
 			attr.addFlashAttribute("supplier",supplier);
 			return "redirect:/suppliers/new";
 		}
-		Supplier newSupplier = supplierService.create(supplier);
+		Supplier newSupplier = supplierService.createSupplier(supplier);
 		model.addAttribute("supplier", newSupplier);
 
 		return "redirect:/suppliers/" + newSupplier.getSupplierId();
@@ -92,17 +89,20 @@ public class SupplierController {
 	}
 
 	@PostMapping(path = "/{id}/update")
-	public String updateSupplier(@PathVariable(value = "id") Long supplierId,  @Valid Supplier supplierDetails, Model model, 
-			BindingResult result, RedirectAttributes attr) {
+	public String updateSupplier(@PathVariable(value = "id") Long supplierId,  @Valid Supplier supplierDetails,
+			BindingResult result, Model model, RedirectAttributes attr) {
  
 		if(result.hasErrors())
 		{
 			attr.addFlashAttribute("org.springframework.validation.BindingResult.supplier",result);
 			attr.addFlashAttribute("supplier",supplierDetails);
+			
+			attr.addFlashAttribute("error", "Error a la hora de actualizar los Proveedores");
+
 			//return "redirect:/suppliers/{id}/edit";
 			return "redirect:/suppliers/" + supplierDetails.getSupplierId() + "/edit";
 		}	
-		supplierService.update(supplierId, supplierDetails);
+		supplierService.updateSupplier(supplierId, supplierDetails);
 		model.addAttribute("supplier", supplierService.findById(supplierId));
 		return "redirect:/suppliers/" + supplierId;
 	}
@@ -136,7 +136,7 @@ public class SupplierController {
 	
 	@GetMapping(value = "/{id}/delete")
 	public String deleteSupplier(@PathVariable("id") Long supplierId) {
-		supplierService.delete(supplierId);
+		supplierService.deleteSupplier(supplierId);
 		return "redirect:/suppliers";
 	}
 

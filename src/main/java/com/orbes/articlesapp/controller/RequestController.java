@@ -70,7 +70,7 @@ public class RequestController {
 			attr.addFlashAttribute("org.springframework.validation.BindingResult.request", result);
 			attr.addFlashAttribute("request", request);
 
-			attr.addFlashAttribute("error", "Error a la hora de crear la solicitud");
+			/*attr.addFlashAttribute("error", "Error a la hora de crear la solicitud");*/
 
 			return "redirect:/requests/new";
 		}

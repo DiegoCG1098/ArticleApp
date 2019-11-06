@@ -21,55 +21,65 @@ public class SupplierServiceImpl implements SupplierService {
 	private SupplierRepository supplierRepository;
 
 	@Override
-	public List<Supplier> getAll() {
+	public List<Supplier> getAllSupplier() {
 		List<Supplier> suppliers = new ArrayList<>();
 		supplierRepository.findAll().iterator().forEachRemaining(suppliers::add);
 		return suppliers;
 	}
 
 	@Override
-	public Supplier create(Supplier entity) {
+	public Supplier createSupplier(Supplier supplier) {
 		Supplier newSupplier;
-		newSupplier = supplierRepository.save(entity);
+		newSupplier = supplierRepository.save(supplier);
 		return newSupplier;
 	}
 
 	@Override
-	public Supplier update(Long id, Supplier entity) {
+	public Supplier updateSupplier(Long id, Supplier supplierDetails) {
 		Supplier supplier = findById(id);
 
-		supplier.setEnterprise(entity.getEnterprise());
-		supplier.setRuc(entity.getRuc());
-		supplier.setProduct(entity.getProduct());
-		supplier.setPhone(entity.getPhone());
-		/*supplier.setDescription(entity.getDescription());*/
+		supplier.setEnterprise(supplierDetails.getEnterprise());
+		supplier.setRuc(supplierDetails.getProduct());
+		supplier.setProduct(supplierDetails.getProduct());
+		supplier.setPhone(supplierDetails.getPhone());
 		
-
 		supplierRepository.save(supplier);
 		return supplier;
 	}
 
 	@Override
-	public void delete(Long id) {
-		supplierRepository.delete(findById(id));
+	public void deleteSupplier(Long supplierId) {
+supplierRepository.delete(findById(supplierId));		
 	}
 
 	@Override
 	public Supplier findById(Long id) {
-		Optional<Supplier> supplier = supplierRepository.findById(id);
+		Optional<Supplier> request = supplierRepository.findById(id);
 
-		if (!supplier.isPresent()) {
-			throw new ResourceNotFoundException("There is no Supplier with ID = " + id);
-		}
+		if (!request.isPresent()) {
+            throw new ResourceNotFoundException("There is no Supplier with ID = " + id);
+        }
 
-		return supplier.get();
+		return request.get();
+	}
 
+	@Override
+	public Supplier getLatestEntry() {
+		 List<Supplier> suppliers = getAllSupplier();
+	        if(suppliers.isEmpty()){
+	            return null;
+	        }
+	        else{
+	            Long latestSupplierID = supplierRepository.findTopByOrderByIdDesc();
+	            return findById(latestSupplierID);
+	        }
 	}
 
 	@Override
 	public Page<Supplier> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return supplierRepository.findAll(pageable);
+		return null;
 	}
 
+	
 }

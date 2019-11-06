@@ -38,13 +38,17 @@
 						   <div class="form-group">
 								<input th:field="*{product}" id="product" type="text"
 									class="form-control validate"> <label for="product">Producto</label>
-								
+								<span class="text-danger errorMsg"
+								    th:if="${#fields.hasErrors('product')}" th:errors="*{product}">								
+								</span>
 							</div>
 							
 							<div class="form-group">
 								<input th:field="*{quantity}" id="quantity" type="text"
 									class="form-control validate"> <label for="quantity">Cantidad</label>
-								
+								<span class="text-danger errorMsg"
+								    th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">								
+								</span>
 							</div>
 
 							<div class="form-group">
@@ -75,7 +79,9 @@
 								<textarea th:field="*{description}" id="description"
 									class="form-control" rows="6"></textarea>
 								<label for="description">Descripcion</label> 
-								
+								<span class="text-danger errorMsg"
+								    th:if="${#fields.hasErrors('description')}" th:errors="*{description}">								
+								</span>
 							</div>
 									
 							<button type="submit" class="btn btn-dark">Guardar</button>

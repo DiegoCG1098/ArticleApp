@@ -20,18 +20,21 @@
 							th:action="@{/suppliers/{id}/update(id=${supplier.supplierId})}"
 							th:method="post">
 
+							<div class="alert alert-danger" th:if="${error!=null}"
+								th:text="${error}"></div>
+
 							<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
 								<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
 							</div>
-
+							
 							<div class="form-group invisible">
 								<input th:field="*{supplierId}" id="supplierId" type="text"
-									class="form-control validate"> <label for="enterprise">supplierId</label>
+									class="form-control validate"> <label for="supplierId">supplierId</label>
 							</div>
 
 							<div class="form-group">
 								<input th:field="*{enterprise}" id="enterprise" type="text"
-									class="form-control validate"> <label for="enterprise">Enterprise</label>
+									class="form-control validate"> <label for="area">Enterprise</label>
 								<span class="text-danger errorMsg"
 									th:if="${#fields.hasErrors('enterprise')}" th:errors="*{enterprise}"></span>
 							</div>

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -20,33 +21,29 @@ public class Request {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 Long id;
 	
-	@NotEmpty
+	@NotEmpty(message="Ingrese area")
 	private String area;
 	
-	@NotEmpty
+	@NotEmpty(message="Ingrese producto")
 	private String product;
 	
 	
-	
-	@NotEmpty
 	private String description;
 	
-	
+	@NotNull(message = "Ingrese cantidad")
 	private Long quantity;
 	
-	@NotEmpty
+	@NotEmpty(message="Ingrese estado de solicitud")
 	private String state;
 	
-	@NotEmpty
+	@NotEmpty(message="Ingrese fecha")
 	private String date;
-
-	@Column(name="unit_price",nullable = false)
+	
+	
+	@NotNull(message = "Ingrese unidad de precio")
 	private double unit_price;
 	
-	public Request()
-	{
-		
-	}
+	
 	
 
 

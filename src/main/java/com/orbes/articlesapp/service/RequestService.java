@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import com.orbes.articlesapp.model.Request;
 
 public interface RequestService  {
+	
 	List<Request> getAllRequest();
 
 	Request createRequest(Request request);
