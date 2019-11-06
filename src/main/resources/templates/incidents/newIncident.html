@@ -34,10 +34,31 @@
 										th:text="${supplier.enterprise}" th:value="${supplier.id}"></option>
 								</select>
 							</div>
-
-
-
-
+							
+							<div class="form-group">
+								<input th:field="*{date}" id="date" type="text"
+									class="form-control validate"> <label for="date">Fecha de Incidencia</label>
+								<span class="text-danger errorMsg"
+									th:if="${#fields.hasErrors('date')}" th:errors="*{date}"
+								></span>
+							</div>
+							
+							<div class="form-group">
+								<label for="gravity">Gravedad</label> <select id="gravity"
+									name="gravity">
+									<option value="leve">LEVE</option>
+									<option value="medio">MEDIO</option>
+									<option value="grave">GRAVE</option>
+									<option value="muyGrave">MUY GRAVE</option>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<textarea th:field="*{observations}" id="observations"
+									class="form-control" rows="6"></textarea>
+								<label for="observations">Observaciones</label> 
+								
+							</div>
 							
 
 							<button type="submit" class="btn btn-dark">Save</button>
