@@ -91,7 +91,7 @@ public class SupplierController {
 		return SUPPLIER_EDIT_FORM_VIEW;
 	}
 
-	/*@PostMapping(path = "/{id}/update")
+	@PostMapping(path = "/{id}/update")
 	public String updateSupplier(@PathVariable(value = "id") Long supplierId,  @Valid Supplier supplierDetails, Model model, 
 			BindingResult result, RedirectAttributes attr) {
  
@@ -105,7 +105,7 @@ public class SupplierController {
 		supplierService.update(supplierId, supplierDetails);
 		model.addAttribute("supplier", supplierService.findById(supplierId));
 		return "redirect:/suppliers/" + supplierId;
-	}*/
+	}
 
 	
 	
